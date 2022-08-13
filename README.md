@@ -7,7 +7,7 @@
 
 
 
-## *Introduction*
+## *Data Description*
 ### The Dataset asks a simple question: “prediction of bike count required at each hour for the stable supply of rental bikes”. It is important to make the rental bike available and accessible to the public at the right time as it lessens the waiting time.
 ### The Dataset contains the following information:
 > * Date: year-month-day
