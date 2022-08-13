@@ -7,8 +7,41 @@
 
 
 
-> * Predicting the number of bikes rented per hour in Seoul, South Korea.
-> * Performed EDA on the dataset and found features 'Hour', 'Temp.' and 'Season' to be most important. Also performed Feature Engineering to extract some features.
-> * Used many regression algorithms for predicting the number of bikes like Linear Regression, Decision Tree, Random Forest and XGBoost etc.
-> * Also performed hyperparameter tuning on models to improve them further.
-> * Best performing models after tuning, R2-score of Random Forest: 92.25%, XGBoost: 94.53%, CatBoost: 94.46%.
+## *Introduction*
+### The Dataset asks a simple question: “prediction of bike count required at each hour for the stable supply of rental bikes”. It is important to make the rental bike available and accessible to the public at the right time as it lessens the waiting time.
+### The Dataset contains the following information:
+> * Date: year-month-day
+> * Rented Bike count: count of bikes rented each hour
+> * Hour: hour of the day
+> * Temperature: temperature in Celsius
+> * Humidity: %
+> * Wind speed: m/s
+> * Visibility: 10m
+> * Dew point temperature: in Celsius
+> * Solar Radiation: MJ/m^2
+> * Rainfall: mm
+> * Snowfall: cm
+> * Seasons: Winter, Spring, Summer, Autumn
+> * Holiday: holiday/no holiday
+> * Functional Day: NoFunc(nonfunctional hours)/Func(functional hours)
+
+## *Steps Involved*
+### 1. EDA
+### After importing the dataset, our first task is to gain insights from the data. We plot various charts like bar graph, histogram, heat map, line graph etc. for univariate and bivariate analysis. This process helped us figuring out various aspects and relationships among the dependent and the independent variables.
+### Conclusions from EDA:
+> * In all seasons, demand for bikes is high in morning (8 a.m.) and highest in the evening (around 6p.m.).
+> * The demand based on season peaks in summer and is minimum in winter i.e. showing temperature dependence.
+> * Demand reduces during weekend.
+> * The bike count is highly correlated with Temperature and Hour.
+> * Temperature and Dew point Temperature are highly correlated.
+
+### 2. Feature Engineering
+### Feature Engineering involves the following steps:
+> * The dtype of Date column will not be easy to interpret for the ML model, therefore we decided to extract some features from it. The new columns formed from Date column are Day, Month, Year, Weekday and Weekend. In the end, we drop the Date column.
+> * Checking the magnitude of multicollinearity of all the numeric features. It is found that Dew point and Year are causing high multicollinearity, so we decide to drop them.
+> * There are many categorical features in our dataset, so we decide to dummify them. After dummification, all the features present are numeric.
+> * In the final step, we separate independent, target variables, and perform train-test split.
+
+
+### 3. Training Models and Hyper parameter Tuning
+### Tried Baseline Linear Regression and it did not work great on the data. Eventually XGBoost gave us the best performance of 94.53% (after tuning).
